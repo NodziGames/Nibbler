@@ -4,7 +4,7 @@
 
 int main()
 {
-	void *handle = dlopen("../MinMax.so", RTLD_LAZY);
+	void *handle = dlopen("MinMax.so", RTLD_LAZY);
 
 	if (!handle)
 	{
@@ -17,14 +17,8 @@ int main()
 
 	create = (maxMin * (*)())dlsym(handle, "create_obj");
 	destroy = (void (*) (maxMin *))dlsym(handle, "destroy_obj");
-	std::cout << "Wut" << std::endl;
 	maxMin *maxmin = create();
-	std::cout << "the" << std::endl;
 	maxmin->printSomething();
-
-	std::cout << "fuck" << std::endl;
-
-	std::cout << "Successfully opened the library" << std::endl;
 	destroy(maxmin);
 	return (0);
 }
