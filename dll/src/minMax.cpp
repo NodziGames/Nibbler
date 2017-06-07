@@ -2,12 +2,37 @@
 
 #include <iostream>
 
-int newMin(int a, int b)
+extern "C" maxMin *create_obj()
 {
-    return ((a < b) ? a : b);
+	return (new maxMin);
 }
 
-int newMax(int a, int b)
+extern "C" void destroy_obj(maxMin *object)
 {
-    return ((a > b) ? a : b);
+	delete object;
+}
+
+maxMin::maxMin()
+{
+	return ;
+}
+
+maxMin::~maxMin()
+{
+	return ;
+}
+
+int maxMin::newMin(int a, int b)
+{
+	return ((a < b) ? a : b);
+}
+
+int maxMin::newMax(int a, int b)
+{
+	return ((a > b) ? a : b);
+}
+
+void maxMin::printSomething()
+{
+	std::cout << "This is something!" << std::endl;
 }
