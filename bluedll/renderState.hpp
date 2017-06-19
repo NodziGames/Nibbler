@@ -17,7 +17,7 @@ class RenderState : public Imain
 		RenderState(RenderState const & src);
 		virtual ~RenderState();
 
-		//RenderState       operator=(RenderState const & rhs);
+		RenderState &       operator=(RenderState const & rhs);
 
 		void				initgame();
 		void				endgame();

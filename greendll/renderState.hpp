@@ -14,10 +14,10 @@ class RenderState : public Imain
 {
 	public:
 		RenderState();
-		//RenderState(RenderState const & src);
+		RenderState(RenderState const & src);
 		virtual ~RenderState();
 
-		//RenderState       operator=(RenderState const & rhs);
+		RenderState &       operator=(RenderState const & rhs);
 
 		void				initgame();
 		void				endgame();

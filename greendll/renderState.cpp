@@ -15,9 +15,21 @@ RenderState::RenderState()
 	return ;
 }
 
+RenderState::RenderState(RenderState const & src)
+{
+    *this = src;
+    return ;
+}
+
 RenderState::~RenderState()
 {
 	return ;
+}
+
+RenderState &       RenderState::operator=(RenderState const & rhs)
+{
+    static_cast<void>(rhs);
+    return (*this);
 }
 
 void		RenderState::initgame()
