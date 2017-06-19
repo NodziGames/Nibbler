@@ -7,7 +7,10 @@ class Global
 {
     public:
         Global();
+        Global(Global const & src);
         ~Global();
+
+        Global &        operator=(Global const & rhs);
 
         int state;
         unsigned long t;
@@ -22,7 +25,3 @@ class Global
         bool quit;
         std::vector<SnakePart> snek;
 };
-
-void rendergame(Global global);
-void rendermenu(Global global);
-void rendergameover(Global global);
