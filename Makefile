@@ -1,26 +1,19 @@
-NAME = nibblers
+NAME = sneksnak
+SRCS = -lncurses *.cpp
+FLAGS = -Wall -Wextra -Werror
 
-SRC = src/main.cpp
-
-OBJ = *.o
-
-C_FLAGS = -Wall -Werror -Wextra
-
-all: $(NAME)
-
+LIB_FILES = red.so blue.so green.so
 
 $(NAME):
-	@echo "Compiling all files"
-	@g++ $(C_FLAGS) $(SRC)
-	@g++ $(C_FLAGS) $(OBJ) -o $(NAME)
-	@echo "Compiled all files..."
+	make -C ./bluedll
+	make -C ./reddll
+	make -C ./greendll
+	clang++ -o $(NAME) $(SRCS) $(FLAGS)
 
-clean:
-	@echo "Removing all obj files..."
-	@rm -f $(OBJ)
+cleanlib:
+	rm -rf $(LIB_FILES)
 
-fclean: clean
-	@echo "Removing executable: $(NAME)"
-	@rm -f $(NAME)
+clean: cleanlib
+	rm -rf $(NAME)
 
-re: fclean all
+re: clean $(NAME)
