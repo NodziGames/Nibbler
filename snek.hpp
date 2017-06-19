@@ -8,9 +8,10 @@ class SnakePart
         int prevx;
         int prevy;
 
+        SnakePart();
         SnakePart(int x, int y);
-        //SnakePart(SnakePart const & src);
+        SnakePart(SnakePart const & src);
         ~SnakePart();
 
-        //SnakePart       operator=(SnakePart const & rhs);
+        SnakePart &       operator=(SnakePart const & rhs);
 };

@@ -1,6 +1,6 @@
 NAME = blue.so
 
-SRC = ./*.cpp ../global.cpp ../snek.cpp
+SRC = ./*.cpp ../global.cpp ../snek.cpp ../Imain.cpp
 
 DLL_FLAGS = -dynamiclib -flat_namespace
 

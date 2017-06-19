@@ -5,9 +5,9 @@
 class Imain
 {
 	public:
-		Imain() {};
+		Imain();
 		//Imain(Imain const & src);
-		virtual ~Imain() {};
+		virtual ~Imain();
 
 		virtual void		initgame()=0;
 		virtual void		endgame()=0;

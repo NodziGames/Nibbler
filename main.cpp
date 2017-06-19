@@ -1,4 +1,3 @@
-#include <curses.h>
 #include <dlfcn.h>
 #include <iostream>
 #include <unistd.h>
@@ -16,15 +15,14 @@
 #define DIGITKEY_1 49
 #define DIGITKEY_2 50
 #define DIGITKEY_3 51
+#define KEY_LEFT 0404
+#define KEY_RIGHT 0405
+#define KEY_UP 0403
+#define KEY_DOWN 0402
 
 Global global;
 
 void *handle = dlopen("red.so", RTLD_NOW | RTLD_LOCAL);
-
-int     getkey()
-{
-	return (getch());
-}
 
 void init()
 {
@@ -49,9 +47,9 @@ void init()
 	global.foody = (rand() % (global.max_y - 2)) + 1;
 }
 
-void playerinput()
+void playerinput(Imain *renderState)
 {
-	switch(getkey())
+	switch(renderState->getkey())
 	{
 		case KEY_LEFT:
 			global.xdir = 2;
@@ -207,7 +205,6 @@ int     main(int argc, char **argv)
 			destroyRenderState = (void (*)(Imain *))dlsym(handle, "deleteRenderState");
 			if (!createRenderState || !destroyRenderState)
 			{
-				endwin();
 				std::cout << "States failed" << std::endl;
 				return (0);
 			}
@@ -217,7 +214,7 @@ int     main(int argc, char **argv)
 				update();
 				renderState->render(global);
 			}
-			playerinput();
+			playerinput(renderState);
 			usleep(1000);
 		}
 	}
