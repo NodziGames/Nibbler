@@ -19,6 +19,7 @@ class Global
         int foodx;
         int foody;
         bool ate;
+        bool quit;
         std::vector<SnakePart> snek;
 };
 

@@ -2,7 +2,7 @@
 
 Global::Global()
 {
-
+    this->quit = false;
 }
 
 Global::~Global()
